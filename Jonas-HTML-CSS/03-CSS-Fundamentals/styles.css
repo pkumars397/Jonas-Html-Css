@@ -1,0 +1,240 @@
+/* ! leastmost specificity ,doesn't inherits but still its apply css rules to all elements on page */
+
+* {
+  /* box-sizing: border-box; */
+  margin: 0px;
+  padding: 0px;
+}
+
+/* !inheritance will apply to all the childs,can be easily overridden by css rules of any childs(mostly text elements get inherited)*/
+body {
+  position: relative;
+  font-family: sans-serif;
+  color: #444;
+  border-top: 5px solid #1098ad;
+}
+.container {
+  /* position: relative; */
+  width: 800px;
+  /* margin-left: auto;
+  margin-right: auto; */
+  margin: 0 auto;
+}
+.main-header {
+  background-color: #eff4f4;
+  padding: 20px 40px;
+  margin-bottom: 60px;
+  /* height: 80px; */
+}
+nav {
+  font-size: 18px;
+  text-align: center;
+}
+article {
+  margin-bottom: 60px;
+}
+.post-header {
+  margin-bottom: 40px;
+}
+/* ! body aside>> more specificity than {body} */
+aside {
+  background-color: #f7f7f7;
+  border-top: 5px solid #1098ad;
+  border-bottom: 5px solid #1098ad;
+  padding: 50px 0;
+  width: 500px;
+}
+
+/* !List Selector */
+/* h1,
+h2,
+h3,
+h4,
+p,
+li {
+  font-family: sans-serif; 
+  color: #444 
+} */
+
+/* Smaller Elements */
+h1,
+h2,
+h3 {
+  color: #1098ad;
+}
+
+h1 {
+  font-size: 26px;
+  text-transform: uppercase;
+  font-style: italic;
+}
+
+h2 {
+  font-size: 40px;
+  margin-bottom: 30px;
+}
+
+h3 {
+  font-size: 30px;
+  margin-bottom: 20px;
+  margin-bottom: 40px; /* margin collapse will happen,when two margin on same place and its usually give margin of max of both */
+}
+
+h4 {
+  font-size: 20px;
+  text-decoration: uppercase;
+  text-align: center;
+}
+
+p {
+  font-size: 22px;
+  line-height: 1.5;
+  margin-bottom: 15px;
+}
+
+ul,
+ol {
+  margin-left: 50px;
+  margin-bottom: 20px;
+}
+li {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+li:last-child {
+  margin-bottom: 0px;
+}
+
+/* ! Desecendent Selector,class and id selector */
+/* footer p {
+  font-size: 16px;
+} */
+#copyright {
+  font-size: 18px;
+}
+/* article header p {
+  font-style: italic;
+} */
+
+#author {
+  font-style: italic;
+  font-size: 18px;
+}
+
+.related-author {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.related {
+  list-style: none;
+}
+
+/* ! pseudo Class */
+
+/* .first-li {
+  color: cyan;
+} */
+
+li:first-child {
+  font-weight: bold;
+}
+
+li:last-child {
+  font-style: italic;
+}
+/* li:nth-child(even) {
+  color: rgba(44, 47, 47, 0.199);
+} */
+button {
+  font-size: 22px;
+  padding: 20px;
+  cursor: pointer;
+  position: absolute;
+  bottom: 50px;
+  right: 50px;
+}
+/* ! Misconception will not work ,first child of article is not p*/
+article p:first-child {
+  color: red;
+}
+
+/* ! Styling Links LVHA(order) */
+
+a:link {
+  color: #1098ad;
+  text-decoration: none;
+}
+
+a:visited {
+  color: #1098ad;
+}
+
+a:hover {
+  color: orangered;
+  font-weight: bold;
+  text-decoration: underline orangered;
+}
+
+a:active {
+  background-color: black;
+  font-style: italic;
+}
+
+.post-img {
+  width: 100%; /* ? takes width of container i.e header and header takes full body width*/
+  height: auto;
+}
+
+/* ! CSS specificity !important>>inline css>>id>>class/pseudo calss>>elements>>universal selector(*) */
+
+/* footer p {
+  color: #1098ad !important;
+}
+footer p {
+  color: aquamarine;
+} */
+
+/* ! tips>> if want to add space between content and border use padding and space between elements then margin.and verticle space use often margin-bottom */
+
+nav a:link {
+  margin-right: 30px;
+  margin-top: 10px;
+  display: inline-block;
+}
+
+nav a:link:last-child {
+  margin-right: 0;
+}
+/*! image is inline block */
+
+/*! Relative position >> normal flow of document and absolute out of normal flow with respect to its parent element And with absolute positioning we can position anything on page.*/
+
+/* ! Pseudo elements */
+/* h1::first-letter {
+  font-size: larger;
+} */
+
+/* h2::first-letter {
+  color: blue;
+} */
+
+/* p::first-line {
+  color: red;
+} */
+/* ? pseudo element after and before are inline elements,so we have to change it to inline block to apply padding,margin,height and widhth */
+h2 {
+  position: relative;
+}
+h2::after {
+  content: "Top";
+  font-size: 16px;
+  background-color: yellow;
+  color: #000;
+  display: inline-block;
+  padding: 5px 10px;
+  position: absolute; /*gets out of flow of h2*/
+  top: -10px;
+  right: -25px;
+}
